@@ -149,9 +149,9 @@ services:
 volumes:
   chatgpt-discord-bot:
 ```
-
-> Note: The 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory.
-
+> **Note**
+>
+> The volume 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory.
 
 
 ### Have a good chat!
@@ -174,14 +174,19 @@ volumes:
 
 ## Optional: Disable logging
 
-* Set the value of `LOGGING` in the `.env` to False
+* Set the value of `LOGGING` in the `stack.env` to False
+
+> **Note**
+>
+> Logging is disabled by default.
 
 ------
 ## Commands
 
 * `/chat [message]` Chat with ChatGPT!
 * `/draw [prompt]` Generate an image with the Dalle2 model
-* `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
+* `/switchpersona [persona]` Switch between optional chatGPT personalities.
+   * `Nexus Mind`: Default personality implant for Neural Nexus
    * `random`: Picks a random persona
    * `chatGPT`: Standard chatGPT mode
    * `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
@@ -191,20 +196,17 @@ volumes:
    * `oppo`: OPPO says exact opposite of what chatGPT would say
    * `dev`: Developer Mode, v2 Developer mode enabled
 
-* `/private` ChatGPT switch to private mode
+* `/private` ChatGPT switch to private mode (disabled)
 * `/public` ChatGPT switch to public mode
-* `/replyall` ChatGPT switch between replyAll mode and default mode
+* `/replyall` ChatGPT switch between replyAll mode and default mode (disabled)
 * `/reset` Clear ChatGPT conversation history
 * `/chat-model` Switch different chat model
    * `OFFICIAL-GPT-3.5`: GPT-3.5 model
    * `OFFICIAL-GPT-4.0`: GPT-4.0 model (make sure your account can access gpt-4 model)
-   * `Website ChatGPT-3.5`: Website ChatGPT-3.5 model (UNOFFICIAL)
-   * `Website ChatGPT-4.0`: Website ChatGPT-4.0 model (UNOFFICIAL)(available if you got a plus account)
-   * `Bard`: Google Bard Model
-   * `Bing`: Microsoft Bing Model
+
 ### Special Features
 
-#### Draw
+#### Draw (disabled)
 
 ![image](https://user-images.githubusercontent.com/91911303/223772051-13f840d5-99ef-4762-98d2-d15ce23cbbd5.png)
 
@@ -223,11 +225,11 @@ volumes:
 
   ![image](https://user-images.githubusercontent.com/89479282/206565977-d7c5d405-fdb4-4202-bbdd-715b7c8e8415.gif)
 
-* `private mode` the bot's reply can only be seen by the person who used the command
+* `private mode` the bot's reply can only be seen by the person who used the command (disabled)
 
   ![image](https://user-images.githubusercontent.com/89479282/206565873-b181e600-e793-4a94-a978-47f806b986da.gif)
 
-* `replyall mode` the bot will reply to all messages in the channel without using slash commands (`/chat` will also be unavailable)
+* `replyall mode` the bot will reply to all messages in the channel without using slash commands (`/chat` will also be unavailable) (disabled)
 
    > **Warning**
    > The bot will easily be triggered in `replyall` mode, which could cause program failures
