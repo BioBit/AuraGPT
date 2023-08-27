@@ -33,7 +33,7 @@ Clone this repository into a directory on your host machine. The container will 
 4. Get the token from bot setting
 
    ![image](https://user-images.githubusercontent.com/89479282/205949161-4b508c6d-19a7-49b6-b8ed-7525ddbef430.png)
-6. Store the token to `.env` under the `DISCORD_BOT_TOKEN`
+6. Store the token to `stack.env` under the `DISCORD_BOT_TOKEN`
 
    <img height="190" width="390" alt="image" src="https://user-images.githubusercontent.com/89479282/222661803-a7537ca7-88ae-4e66-9bec-384f3e83e6bd.png">
 
@@ -153,7 +153,11 @@ volumes:
 ```
 > **Note**
 >
-> The volume 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory.
+> The volume 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory. Do not change the target.
+> 
+> image: may change depending what you named in during image building.
+
+Under Advanced mode for environmental variables, post this:
 
 ```
 DISCORD_BOT_TOKEN=
@@ -166,7 +170,11 @@ DISCORD_CHANNEL_ID=1116284755533639691
 bing_enable_auto_login=False
 bard_enable_auto_login=False
 ```
-
+> **Note**
+>
+> Copy&paste the the Discord token and openAI API key you generated in the previous steps.
+>
+> `DISCORD_CHANNEL_ID` is the channel where the Bot will attempt to post the first message. It is optional.
 
 ### Have a good chat!
 ---
@@ -174,7 +182,7 @@ bard_enable_auto_login=False
 ## Optional: Setup system prompt
 
 * A system prompt would be invoked when the bot is first started or reset
-* You can set it up by modifying the content in `system_prompt.txt`
+* You can set it up by modifying the content in `system_prompt.txt`. For Neural Nexus, 'Council Prompt v4' is used.
 * All the text in the file will be fired as a prompt to the bot
 * Get the first message from ChatGPT in your discord channel!
 * Go Discord setting turn `developer mode` on
@@ -184,7 +192,7 @@ bard_enable_auto_login=False
         ![channel-id](https://user-images.githubusercontent.com/89479282/207697217-e03357b3-3b3d-44d0-b880-163217ed4a49.PNG)
 
    2. For Neural Nexus, the channel is #ai-introduction (1116284755533639691)
-   3. paste it into `.env` under `DISCORD_CHANNEL_ID`
+   3. paste it into `stack.env` under `DISCORD_CHANNEL_ID`
 
 ## Optional: Disable logging
 
