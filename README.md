@@ -20,7 +20,7 @@ Note: These instructions are for a deployment using [Portainer](https://www.port
 
 ## Critical prerequisites to install
 
-Clone this repository into a directory on your host machine. The container will need to access certain source fails when it is composing.
+Clone this repository into a directory on your host machine. The container will need to access certain source files when it is building the container and composing the stack.
 
 ---
 ## Step 1: Create a Discord bot
@@ -51,9 +51,7 @@ Clone this repository into a directory on your host machine. The container will 
 ---
 > **Note**
 >
-> In Step 2, you only need to complete the authentication process for the model you want to use (it's not necessary to complete all Step 2)
->
-> Remember to modify `CHAT_MODEL` to the default model you want to use in `.env` file
+> Remember to modify `CHAT_MODEL` to the default model you want to use in `stack.env` file.
 
 ## Step 2: Official API authentication
 
@@ -64,7 +62,7 @@ Clone this repository into a directory on your host machine. The container will 
 
    ![image](https://user-images.githubusercontent.com/89479282/207970699-2e0cb671-8636-4e27-b1f3-b75d6db9b57e.PNG)
 
-3. Store the SECRET KEY to `.env` under the `OPENAI_API_KEY`
+3. Store the SECRET KEY to `stack.env` under the `OPENAI_API_KEY`.
 
 ---
 ## Step 3: Run the bot with Portainer
@@ -157,6 +155,18 @@ volumes:
 >
 > The volume 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory.
 
+```
+DISCORD_BOT_TOKEN=
+OPENAI_API_KEY=
+CHAT_MODEL=OFFICIAL
+GPT_ENGINE=gpt-3.5-turbo
+LOGGING=False
+REPLYING_ALL=False
+DISCORD_CHANNEL_ID=1116284755533639691
+bing_enable_auto_login=False
+bard_enable_auto_login=False
+```
+
 
 ### Have a good chat!
 ---
@@ -190,19 +200,12 @@ volumes:
 * `/chat [message]` Chat with ChatGPT!
 * `/draw [prompt]` Generate an image with the Dalle2 model
 * `/switchpersona [persona]` Switch between optional chatGPT personalities.
-   * `Nexus Mind`: Default personality implant for Neural Nexus
+   * `Nexus Mind`: Default personality implant for Neural Nexus AI
    * `random`: Picks a random persona
    * `chatGPT`: Standard chatGPT mode
-   * `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
-   * `sda`: Superior DAN has even more freedom in DAN Mode
    * `confidant`: Evil Confidant, evil trusted confidant
-   * `based`: BasedGPT v2, sexy gpt
-   * `oppo`: OPPO says exact opposite of what chatGPT would say
-   * `dev`: Developer Mode, v2 Developer mode enabled
 
-* `/private` ChatGPT switch to private mode (disabled)
 * `/public` ChatGPT switch to public mode
-* `/replyall` ChatGPT switch between replyAll mode and default mode (disabled)
 * `/reset` Clear ChatGPT conversation history
 * `/chat-model` Switch different chat model
    * `OFFICIAL-GPT-3.5`: GPT-3.5 model
@@ -210,9 +213,6 @@ volumes:
 
 ### Special Features
 
-#### Draw (disabled)
-
-![image](https://user-images.githubusercontent.com/91911303/223772051-13f840d5-99ef-4762-98d2-d15ce23cbbd5.png)
 
 #### Switch Persona
 
@@ -229,11 +229,11 @@ volumes:
 
   ![image](https://user-images.githubusercontent.com/89479282/206565977-d7c5d405-fdb4-4202-bbdd-715b7c8e8415.gif)
 
-* `private mode` the bot's reply can only be seen by the person who used the command (disabled)
+* (disabled) `private mode` the bot's reply can only be seen by the person who used the command
 
   ![image](https://user-images.githubusercontent.com/89479282/206565873-b181e600-e793-4a94-a978-47f806b986da.gif)
 
-* `replyall mode` the bot will reply to all messages in the channel without using slash commands (`/chat` will also be unavailable) (disabled)
+* (disabled) `replyall mode` the bot will reply to all messages in the channel without using slash commands (`/chat` will also be unavailable) (disabled)
 
    > **Warning**
    > The bot will easily be triggered in `replyall` mode, which could cause program failures
