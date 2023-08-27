@@ -35,8 +35,6 @@ Clone this repository into a directory on your host machine. The container will 
    ![image](https://user-images.githubusercontent.com/89479282/205949161-4b508c6d-19a7-49b6-b8ed-7525ddbef430.png)
 6. Store the token to `stack.env` under the `DISCORD_BOT_TOKEN`
 
-   <img height="190" width="390" alt="image" src="https://user-images.githubusercontent.com/89479282/222661803-a7537ca7-88ae-4e66-9bec-384f3e83e6bd.png">
-
 7. Turn MESSAGE CONTENT INTENT `ON`
 
    ![image](https://user-images.githubusercontent.com/89479282/205949323-4354bd7d-9bb9-4f4b-a87e-deb9933a89b5.png)
@@ -206,7 +204,6 @@ bard_enable_auto_login=False
 ## Commands
 
 * `/chat [message]` Chat with ChatGPT!
-* `/draw [prompt]` Generate an image with the Dalle2 model
 * `/switchpersona [persona]` Switch between optional chatGPT personalities.
    * `Nexus Mind`: Default personality implant for Neural Nexus AI
    * `random`: Picks a random persona
@@ -227,8 +224,6 @@ bard_enable_auto_login=False
 > **Warning**
 >
 > Using certain personas may generate vulgar or disturbing content. Use at your own risk.
-
-![image](https://user-images.githubusercontent.com/91911303/223772334-7aece61f-ead7-4119-bcd4-7274979c4702.png)
 
 
 #### Mode
