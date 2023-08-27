@@ -18,25 +18,28 @@ Note: These instructions are for a deployment using [Portainer](https://www.port
 
 ## Critical prerequisites to install
 
-
+Clone this repository into a directory on your host machine. The container will need to access certain source fails when it is composing.
 
 ---
 ## Step 1: Create a Discord bot
 
 1. Go to https://discord.com/developers/applications create an application
-2. Build a Discord bot under the application
-3. Get the token from bot setting
+3. Build a Discord bot under the application.
+> General information: AuraGPT, Description (Neural Nexus AI, powered by ChatGPT)
+
+> Bot: Give it a name that you like, for example `Nexus Mind`. Make sure to disable 'Public Bot' option. Enable 'Message Content Intent'
+4. Get the token from bot setting
 
    ![image](https://user-images.githubusercontent.com/89479282/205949161-4b508c6d-19a7-49b6-b8ed-7525ddbef430.png)
-4. Store the token to `.env` under the `DISCORD_BOT_TOKEN`
+6. Store the token to `.env` under the `DISCORD_BOT_TOKEN`
 
    <img height="190" width="390" alt="image" src="https://user-images.githubusercontent.com/89479282/222661803-a7537ca7-88ae-4e66-9bec-384f3e83e6bd.png">
 
-5. Turn MESSAGE CONTENT INTENT `ON`
+7. Turn MESSAGE CONTENT INTENT `ON`
 
    ![image](https://user-images.githubusercontent.com/89479282/205949323-4354bd7d-9bb9-4f4b-a87e-deb9933a89b5.png)
 
-6. Invite your bot to your server via OAuth2 URL Generator
+8. Invite your bot to your server via OAuth2 URL Generator
 
    ![image](https://user-images.githubusercontent.com/89479282/205949600-0c7ddb40-7e82-47a0-b59a-b089f929d177.png)
 ---
@@ -58,51 +61,6 @@ Note: These instructions are for a deployment using [Portainer](https://www.port
 3. Store the SECRET KEY to `.env` under the `OPENAI_API_KEY`
 
 ---
-## Step 2: Website ChatGPT authentication
-
-> **Only Support ChatGPT Plus Account**
-
-1. Open https://chat.openai.com/api/auth/session
-
-2. Open console with `F12`
-
-3. Open `Application` tab > Cookies
-
-   ![image](https://user-images.githubusercontent.com/89479282/229298001-41ab4f61-5b79-4c65-b08c-708ee6fe2304.png)
-
-4. Copy the value for `_puid` from cookies and paste it into `.env` under `PUID`
-
-5. Copy the value for `accessToken` from cookies and paste it into `.env` under `ACCESS_TOKEN`
-
----
-## Step 2: Google Bard authentication
-1. Go to https://bard.google.com/
-
-2. Open console with `F12`
-
-3. Open `Application` tab > Cookies
-
-4. Copy the value for `__Secure-1PSID` from cookies and paste it into `.env` under `BARD_SESSION_ID`
-
----
-## Step 2: Microsoft Bing authentication
-1. **Rename the file `cookies.dev.json` to `cookies.json`**
-
-2. Go to https://bing.com/chat and log in your Microsoft account
-
-3. Use Cookie Editor or similar extensions to export the cookies
-
-4. Paste it into `cookies.json`
-
----
-## Step 3: Run the bot on the desktop
-
-1. Open a terminal or command prompt
-
-2. Navigate to the directory where you installed the ChatGPT Discord bot
-
-3. Run `python3 main.py` or `python main.py` to start the bot
----
 ## Step 3: Run the bot with Docker
 
 1. Build the Docker image & Run the Docker container `docker compose up -d`
@@ -116,20 +74,6 @@ Note: These instructions are for a deployment using [Portainer](https://www.port
 
 ### Have a good chat!
 ---
-
-## Optional: Auto-Login
->  * The auto-login feature allows your bot to automatically login to either Google Bard or Microsoft Bing using provided credentials
->  * It will auto fetch the cookies you need
-
-*  To enable this feature, first specify your Chrome browser's version by filling in the `chrome_version` field in the `.env` file
-* Google Bard
-   1. set `bard_enable_auto_login` to `True` in `.env`
-   2. Fill `google_account` and `google_password` in `.env`
-
-      (NOTICE:  AUTO-LOGIN ONLY WORKS FOR GOOGLE ACCOUNT THAT DOES NOT HAVE 2FA)
-* Microsoft Bing
-   1. set `bing_enable_auto_login` to `True` in `.env`
-   2. Then fill `bing_account` and `bing_password` in `.env`
 
 ## Optional: Setup system prompt
 
@@ -149,8 +93,6 @@ Note: These instructions are for a deployment using [Portainer](https://www.port
 
 * Set the value of `LOGGING` in the `.env` to False
 
-------
->  [**中文設置教學**](https://zero6992.me/2023/03/08/chatGPT-discord-bot-chinese/)
 ------
 ## Commands
 
