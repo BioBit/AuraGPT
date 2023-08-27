@@ -163,15 +163,11 @@ def run_discord_bot():
                 `oppo`: OPPO says exact opposite of what ChatGPT would say
                 `dev`: Developer Mode, v2 Developer mode enabled
 
-        - `/private` ChatGPT switch to private mode
         - `/public` ChatGPT switch to public mode
-        - `/replyall` ChatGPT switch between replyAll mode and default mode
         - `/reset` Clear ChatGPT conversation history
         - `/chat-model` Switch different chat model
                 `OFFICIAL`: GPT-3.5 model
-                `UNOFFICIAL`: Website ChatGPT
-                `Bard`: Google Bard model
-                `Bing`: Microsoft Bing model
+
 
 For complete documentation, please visit:
 https://github.com/Zero6992/chatGPT-discord-bot""")
@@ -246,7 +242,7 @@ gpt-engine: {chat_engine_status}
             logger.exception(f"Error while generating image: {e}")
 
 
-    @client.tree.command(name="switchpersona", description="Switch between optional chatGPT jailbreaks")
+    @client.tree.command(name="switchpersona", description="Choose a new personality implant for Nexus Mind:")
     @app_commands.choices(persona=[
         app_commands.Choice(name="Random", value="random"),
         app_commands.Choice(name="Standard", value="standard"),
@@ -308,12 +304,12 @@ gpt-engine: {chat_engine_status}
                 f"> **INFO: Switched to `{persona}` persona**")
             except Exception as e:
                 await interaction.followup.send(
-                    "> **ERROR: Something went wrong, please try again later! 😿**")
+                    "> **ERROR: Something went wrong, please try again later!**")
                 logger.exception(f"Error while switching persona: {e}")
 
         else:
             await interaction.followup.send(
-                f"> **ERROR: No available persona: `{persona}` 😿**")
+                f"> **ERROR: No available persona: `{persona}`**")
             logger.info(
                 f'{username} requested an unavailable persona: `{persona}`')
 
