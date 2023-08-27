@@ -1,27 +1,25 @@
-# ChatGPT Discord Bot
+# AuraGPT
 
-> ### Build your own Discord bot using ChatGPT
+> ### A ChatGPT Discord Bot for [Neural Nexus](https://portal.neuralnexus.ch/)
 
 ---
 > **Warning**
 >
-> #### 2023-04-12 Bing now supported
-> #### 2023-03-27 Bard now supported
-> #### 2023-08-02 Unofficial GPT-4 is currently down
+> #### Modified Bot based on: https://github.com/Zero6992/chatGPT-discord-bot
+> #### This Bot requires OpenAI API access. [Every prompt will cost a few cents](https://openai.com/pricing).
 
 ### Chat
 
 ![image](https://user-images.githubusercontent.com/89479282/206497774-47d960cd-1aeb-4fba-9af5-1f9d6ff41f00.gif)
 
-# Setup
+## Setup in Portainer
+
+Note: These instructions are for a deployment using [Portainer](https://www.portainer.io/).
 
 ## Critical prerequisites to install
 
-* run ```pip3 install -r requirements.txt```
 
-* **Rename the file `.env.example` to `.env`**
 
-* Recommended python version `3.9` +
 ---
 ## Step 1: Create a Discord bot
 
