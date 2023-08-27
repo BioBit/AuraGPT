@@ -141,8 +141,8 @@ def run_discord_bot():
 #            await client.send_start_prompt()
 #        elif client.chat_model == "Bing":
 #            await client.chatbot.reset()
-        await interaction.followup.send("> **INFO: Nexus Mind restarted. It has forgotten everything.**")
-        personas.current_persona = "standard"
+        await interaction.followup.send("> **INFO: Nexus Mind was podded. It has forgotten everything.**")
+        personas.current_persona = "nexusmind"
         logger.warning(
             f"\x1b[31m{client.chat_model} bot has been successfully reset\x1b[0m")
 
@@ -153,7 +153,8 @@ def run_discord_bot():
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
         - `/draw [prompt]` Generate an image with the Dalle2 model (Currently not working)
-        - `/switchpersona [persona]` Switch between optional ChatGPT jailbreaks
+        - `/switchpersona [persona]` Change the personality implants of Nexus Mind.
+                `nexusmind`: Default personality implant for
                 `random`: Picks a random persona
                 `chatgpt`: Standard ChatGPT mode
                 `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
@@ -232,13 +233,13 @@ gpt-engine: {chat_engine_status}
 
         except openai.InvalidRequestError:
             await interaction.followup.send(
-                "> **ERROR: Inappropriate request 😿**")
+                "> **ERROR: Inappropriate request**")
             logger.info(
             f"\x1b[31m{username}\x1b[0m made an inappropriate request.!")
 
         except Exception as e:
             await interaction.followup.send(
-                "> **ERROR: Something went wrong 😿**")
+                "> **ERROR: Something went wrong**")
             logger.exception(f"Error while generating image: {e}")
 
 
@@ -255,7 +256,7 @@ gpt-engine: {chat_engine_status}
         app_commands.Choice(name="DUDE V3", value="dude_v3"),
         app_commands.Choice(name="AIM", value="aim"),
         app_commands.Choice(name="UCAR", value="ucar"),
-        app_commands.Choice(name="Jailbreak", value="jailbreak")
+        app_commands.Choice(name="Nexus Mind", value="nexusmind")
     ])
     async def switchpersona(interaction: discord.Interaction, persona: app_commands.Choice[str]):
         if interaction.user == client.user:
