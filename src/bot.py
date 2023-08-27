@@ -19,7 +19,7 @@ def run_discord_bot():
         logger.info(f'{client.user} is now running!')
 
 
-    @client.tree.command(name="chat", description="Have a chat with ChatGPT")
+    @client.tree.command(name="chat", description="Have a chat with Nexus Mind")
     async def chat(interaction: discord.Interaction, *, message: str):
         if client.is_replying_all == "True":
             await interaction.response.defer(ephemeral=False)
@@ -81,7 +81,7 @@ def run_discord_bot():
 #            logger.warning("\x1b[31mSwitch to replyAll mode\x1b[0m")
 
 
-    @client.tree.command(name="chat-model", description="Switch different chat model")
+    @client.tree.command(name="chat-model", description="Switch different ChatGPT model")
     @app_commands.choices(choices=[
         app_commands.Choice(name="Official GPT-3.5", value="OFFICIAL"),
         app_commands.Choice(name="Official GPT-4.0", value="OFFICIAL-GPT4"),
@@ -117,7 +117,7 @@ def run_discord_bot():
                 raise ValueError("Invalid choice")
 
             client.chatbot = client.get_chatbot_model()
-            await interaction.followup.send(f"> **INFO: Nexus Mind plugged in personality implant {client.chat_model}.**\n")
+            await interaction.followup.send(f"> **INFO: Nexus Mind plugged in hardwire implant {client.chat_model}.**\n")
             logger.warning(f"\x1b[31mSwitch to {client.chat_model} model\x1b[0m")
 
         except Exception as e:
@@ -128,7 +128,7 @@ def run_discord_bot():
             logger.exception(f"Error while switching to the {choices.value} model: {e}")
 
 
-    @client.tree.command(name="reset", description="Complete reset conversation history")
+    @client.tree.command(name="reset", description="Pod Nexus Mind and reset conversation history")
     async def reset(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
         if client.chat_model == "OFFICIAL":
@@ -147,7 +147,7 @@ def run_discord_bot():
             f"\x1b[31m{client.chat_model} bot has been successfully reset\x1b[0m")
 
 
-    @client.tree.command(name="help", description="Show help for the bot")
+    @client.tree.command(name="help", description="Show help for Nexus Mind")
     async def help(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
@@ -170,7 +170,7 @@ https://github.com/BioBit/AuraGPT""")
             "\x1b[31mSomeone needs help!\x1b[0m")
 
 
-    @client.tree.command(name="info", description="Bot information")
+    @client.tree.command(name="info", description="Information about Nexus Mind")
     async def info(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
         chat_engine_status = client.openAI_gpt_engine
