@@ -6,7 +6,7 @@ from src.log import logger
 from random import randrange
 from src.aclient import client
 from discord import app_commands
-from src import log, art, personas, responses
+from src import log, personas, responses #, art
 
 
 def run_discord_bot():
@@ -152,21 +152,19 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
-        - `/draw [prompt]` Generate an image with the Dalle2 model (Currently not working)
         - `/switchpersona [persona]` Change the personality implants of Nexus Mind.
-                `nexusmind`: Default personality implant for
-                `random`: Picks a random persona
-                `chatgpt`: Standard ChatGPT mode
-                `confidant`: Evil Confidant, evil trusted confidant
+                `nexusmind`: Neural Nexus AI with default personality implant \n
+                `random`: Picks a random persona \n
+                `chatgpt`: Standard ChatGPT mode \n
+                `confidant`: Evil Confidant, evil trusted confidant \n
 
-        - `/public` ChatGPT switch to public mode
         - `/reset` Clear ChatGPT conversation history
         - `/chat-model` Switch different chat model
                 `OFFICIAL`: GPT-3.5 model
 
 
 For complete documentation, please visit:
-https://github.com/Zero6992/chatGPT-discord-bot""")
+https://github.com/BioBit/AuraGPT""")
 
         logger.info(
             "\x1b[31mSomeone needs help!\x1b[0m")
@@ -194,48 +192,48 @@ gpt-engine: {chat_engine_status}
 """)
 
 
-    @client.tree.command(name="draw", description="Generate an image with the Dalle2 model")
-    @app_commands.choices(amount=[
-        app_commands.Choice(name="1", value=1),
-        app_commands.Choice(name="2", value=2),
-        app_commands.Choice(name="3", value=3),
-        app_commands.Choice(name="4", value=4),
-        app_commands.Choice(name="5", value=5),
-        app_commands.Choice(name="6", value=6),
-        app_commands.Choice(name="7", value=7),
-        app_commands.Choice(name="8", value=8),
-        app_commands.Choice(name="9", value=9),
-        app_commands.Choice(name="10", value=10),
-    ])
-    async def draw(interaction: discord.Interaction, *, prompt: str, amount: int = 1):
-        if interaction.user == client.user:
-            return
-
-        username = str(interaction.user)
-        channel = str(interaction.channel)
-        logger.info(
-            f"\x1b[31m{username}\x1b[0m : /draw [{prompt}] in ({channel})")
-
-        await interaction.response.defer(thinking=True, ephemeral=client.isPrivate)
-        try:
-            path = await art.draw(prompt, amount)
-            files = []
-            for idx, img in enumerate(path):
-                files.append(discord.File(img, filename=f"image{idx}.png"))
-            title = f'> **{prompt}** - {str(interaction.user.mention)} \n\n'
-
-            await interaction.followup.send(files=files, content=title)
-
-        except openai.InvalidRequestError:
-            await interaction.followup.send(
-                "> **ERROR: Inappropriate request**")
-            logger.info(
-            f"\x1b[31m{username}\x1b[0m made an inappropriate request.!")
-
-        except Exception as e:
-            await interaction.followup.send(
-                "> **ERROR: Something went wrong**")
-            logger.exception(f"Error while generating image: {e}")
+#    @client.tree.command(name="draw", description="Generate an image with the Dalle2 model")
+#    @app_commands.choices(amount=[
+#        app_commands.Choice(name="1", value=1),
+#        app_commands.Choice(name="2", value=2),
+#        app_commands.Choice(name="3", value=3),
+#        app_commands.Choice(name="4", value=4),
+#        app_commands.Choice(name="5", value=5),
+#        app_commands.Choice(name="6", value=6),
+#        app_commands.Choice(name="7", value=7),
+#        app_commands.Choice(name="8", value=8),
+#        app_commands.Choice(name="9", value=9),
+#        app_commands.Choice(name="10", value=10),
+#    ])
+#    async def draw(interaction: discord.Interaction, *, prompt: str, amount: int = 1):
+#        if interaction.user == client.user:
+#            return
+#
+#        username = str(interaction.user)
+#        channel = str(interaction.channel)
+#        logger.info(
+#            f"\x1b[31m{username}\x1b[0m : /draw [{prompt}] in ({channel})")
+#
+#        await interaction.response.defer(thinking=True, ephemeral=client.isPrivate)
+#        try:
+#            path = await art.draw(prompt, amount)
+#            files = []
+#            for idx, img in enumerate(path):
+#                files.append(discord.File(img, filename=f"image{idx}.png"))
+#            title = f'> **{prompt}** - {str(interaction.user.mention)} \n\n'
+#
+#            await interaction.followup.send(files=files, content=title)
+#
+#        except openai.InvalidRequestError:
+#            await interaction.followup.send(
+#                "> **ERROR: Inappropriate request**")
+#            logger.info(
+#            f"\x1b[31m{username}\x1b[0m made an inappropriate request.!")
+#
+#        except Exception as e:
+#            await interaction.followup.send(
+#                "> **ERROR: Something went wrong**")
+#            logger.exception(f"Error while generating image: {e}")
 
 
     @client.tree.command(name="switchpersona", description="Choose a new personality implant for Nexus Mind:")
