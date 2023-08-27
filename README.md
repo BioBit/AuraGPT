@@ -147,7 +147,7 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: /opt/portainer/portainer_data/compose/auragpt
+        source: /opt/portainer/portainer_data/compose/AuraGPT
         target: /DiscordBot
  
 volumes:
