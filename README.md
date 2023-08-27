@@ -12,6 +12,8 @@
 
 ![image](https://user-images.githubusercontent.com/89479282/206497774-47d960cd-1aeb-4fba-9af5-1f9d6ff41f00.gif)
 
+To continue the conversation -> reply or start a thread. The continue the conversation using the `/chat` command.
+
 ## Setup in Portainer
 
 Note: These instructions are for a deployment using [Portainer](https://www.portainer.io/).
@@ -61,16 +63,96 @@ Clone this repository into a directory on your host machine. The container will 
 3. Store the SECRET KEY to `.env` under the `OPENAI_API_KEY`
 
 ---
-## Step 3: Run the bot with Docker
+## Step 3: Run the bot with Portainer
 
-1. Build the Docker image & Run the Docker container `docker compose up -d`
+### Build the Docker image & Run the Docker container
 
-2. Inspect whether the bot works well `docker logs -t chatgpt-discord-bot`
+In Portainer, go to your Environment > Image > '+Build a new image'
 
-   ### Stop the bot:
+> name: auragpt
 
-   * `docker ps` to see the list of running services
-   * `docker stop <BOT CONTAINER ID>` to stop the running bot
+> Build method: Web editor
+
+Copy&Paste the following (also available in the 'Dockerfile')
+
+```
+FROM python:3.10-bullseye
+
+ENV PYTHONUNBUFFERED 1
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  libcairo2-dev \
+  cargo \
+  libfreetype6-dev \
+  gcc \
+  libgdk-pixbuf2.0-dev \
+  gettext \
+  libjpeg-dev \
+  liblcms2-dev \
+  libffi-dev \
+  musl-dev \
+  libopenjp2-7-dev \
+  libssl-dev \
+  libpango1.0-dev \
+  poppler-utils \
+  postgresql-client \
+  libpq-dev \
+  python3-dev \
+  rustc \
+  tcl-dev \
+  libtiff5-dev \
+  tk-dev \
+  zlib1g-dev
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN rustup update
+
+RUN pip3 install cryptography
+COPY ./ /DiscordBot
+WORKDIR /DiscordBot
+RUN pip3 install -r requirements.txt
+
+CMD ["python3", "main.py"]
+```
+
+> In 'Upload', make sure to upload the files `requirements.txt` and `main.py`.
+
+> Click 'Build the image' at the bottom. This will take several minutes and the image will be approx. 3 GB large.
+
+### Create the Portainer stack that will run the container
+
+In Portainer, go to your Environment > Stacks > '+Add stack'
+
+> name: auragpt
+
+> Build method: Web editor
+
+Copy&Paste the following (also available in the 'docker-compose.yml')
+
+```
+version: "3"
+
+services:
+  chatgpt-discord-bot:
+    build: .
+    image: auragpt:latest
+    container_name: auragpt
+    env_file:
+      - stack.env
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/portainer/portainer_data/compose/auragpt
+        target: /DiscordBot
+ 
+volumes:
+  chatgpt-discord-bot:
+```
+
+> Note: The 'source:' will be on your host machine. You can provide any folder that you like. Preferably, it is in your home directory.
+
+
 
 ### Have a good chat!
 ---
@@ -87,7 +169,8 @@ Clone this repository into a directory on your host machine. The container will 
 
         ![channel-id](https://user-images.githubusercontent.com/89479282/207697217-e03357b3-3b3d-44d0-b880-163217ed4a49.PNG)
 
-   2. paste it into `.env` under `DISCORD_CHANNEL_ID`
+   2. For Neural Nexus, the channel is #ai-introduction (1116284755533639691)
+   3. paste it into `.env` under `DISCORD_CHANNEL_ID`
 
 ## Optional: Disable logging
 
