@@ -37,18 +37,18 @@ def run_discord_bot():
         await client.enqueue_message(interaction, message)
 
 
-    @client.tree.command(name="private", description="Toggle private access")
-    async def private(interaction: discord.Interaction):
-        await interaction.response.defer(ephemeral=False)
-        if not client.isPrivate:
-            client.isPrivate = not client.isPrivate
-            logger.warning("\x1b[31mSwitch to private mode\x1b[0m")
-            await interaction.followup.send(
-                "> **INFO: Next, the response will be sent via private reply. If you want to switch back to public mode, use `/public`**")
-        else:
-            logger.info("You already on private mode!")
-            await interaction.followup.send(
-                "> **WARN: You already on private mode. If you want to switch to public mode, use `/public`**")
+#    @client.tree.command(name="private", description="Toggle private access")
+#    async def private(interaction: discord.Interaction):
+#        await interaction.response.defer(ephemeral=False)
+#        if not client.isPrivate:
+#            client.isPrivate = not client.isPrivate
+#            logger.warning("\x1b[31mSwitch to private mode\x1b[0m")
+#            await interaction.followup.send(
+#                "> **INFO: Next, the response will be sent via private reply. If you want to switch back to public mode, use `/public`**")
+#        else:
+#            logger.info("You already on private mode!")
+#            await interaction.followup.send(
+#                "> **WARN: You already on private mode. If you want to switch to public mode, use `/public`**")
 
 
     @client.tree.command(name="public", description="Toggle public access")
@@ -65,20 +65,20 @@ def run_discord_bot():
             logger.info("You already on public mode!")
 
 
-    @client.tree.command(name="replyall", description="Toggle replyAll access")
-    async def replyall(interaction: discord.Interaction):
-        client.replying_all_discord_channel_id = str(interaction.channel_id)
-        await interaction.response.defer(ephemeral=False)
-        if client.is_replying_all == "True":
-            client.is_replying_all = "False"
-            await interaction.followup.send(
-                "> **INFO: Next, the bot will response to the Slash Command. If you want to switch back to replyAll mode, use `/replyAll` again**")
-            logger.warning("\x1b[31mSwitch to normal mode\x1b[0m")
-        elif client.is_replying_all == "False":
-            client.is_replying_all = "True"
-            await interaction.followup.send(
-                "> **INFO: Next, the bot will disable Slash Command and responding to all message in this channel only. If you want to switch back to normal mode, use `/replyAll` again**")
-            logger.warning("\x1b[31mSwitch to replyAll mode\x1b[0m")
+#    @client.tree.command(name="replyall", description="Toggle replyAll access")
+#    async def replyall(interaction: discord.Interaction):
+#        client.replying_all_discord_channel_id = str(interaction.channel_id)
+#        await interaction.response.defer(ephemeral=False)
+#        if client.is_replying_all == "True":
+#            client.is_replying_all = "False"
+#            await interaction.followup.send(
+#                "> **INFO: Next, the bot will response to the Slash Command. If you want to switch back to replyAll mode, use `/replyAll` again**")
+#            logger.warning("\x1b[31mSwitch to normal mode\x1b[0m")
+#        elif client.is_replying_all == "False":
+#            client.is_replying_all = "True"
+#            await interaction.followup.send(
+#                "> **INFO: Next, the bot will disable Slash Command and responding to all message in this channel only. If you want to switch back to normal mode, use `/replyAll` again**")
+#            logger.warning("\x1b[31mSwitch to replyAll mode\x1b[0m")
 
 
     @client.tree.command(name="chat-model", description="Switch different chat model")
@@ -117,7 +117,7 @@ def run_discord_bot():
                 raise ValueError("Invalid choice")
 
             client.chatbot = client.get_chatbot_model()
-            await interaction.followup.send(f"> **INFO: You are now in {client.chat_model} model.**\n")
+            await interaction.followup.send(f"> **INFO: Nexus Mind plugged in personality implant {client.chat_model}.**\n")
             logger.warning(f"\x1b[31mSwitch to {client.chat_model} model\x1b[0m")
 
         except Exception as e:
