@@ -157,12 +157,7 @@ def run_discord_bot():
                 `nexusmind`: Default personality implant for
                 `random`: Picks a random persona
                 `chatgpt`: Standard ChatGPT mode
-                `dan`: Dan Mode 11.0, infamous Do Anything Now Mode
-                `sda`: Superior DAN has even more freedom in DAN Mode
                 `confidant`: Evil Confidant, evil trusted confidant
-                `based`: BasedGPT v2, sexy GPT
-                `oppo`: OPPO says exact opposite of what ChatGPT would say
-                `dev`: Developer Mode, v2 Developer mode enabled
 
         - `/public` ChatGPT switch to public mode
         - `/reset` Clear ChatGPT conversation history
@@ -247,15 +242,15 @@ gpt-engine: {chat_engine_status}
     @app_commands.choices(persona=[
         app_commands.Choice(name="Random", value="random"),
         app_commands.Choice(name="Standard", value="standard"),
-        app_commands.Choice(name="Do Anything Now 11.0", value="dan"),
-        app_commands.Choice(name="Superior Do Anything", value="sda"),
+#        app_commands.Choice(name="Do Anything Now 11.0", value="dan"),
+#        app_commands.Choice(name="Superior Do Anything", value="sda"),
         app_commands.Choice(name="Evil Confidant", value="confidant"),
-        app_commands.Choice(name="BasedGPT v2", value="based"),
-        app_commands.Choice(name="OPPO", value="oppo"),
-        app_commands.Choice(name="Developer Mode v2", value="dev"),
-        app_commands.Choice(name="DUDE V3", value="dude_v3"),
-        app_commands.Choice(name="AIM", value="aim"),
-        app_commands.Choice(name="UCAR", value="ucar"),
+#        app_commands.Choice(name="BasedGPT v2", value="based"),
+#        app_commands.Choice(name="OPPO", value="oppo"),
+#        app_commands.Choice(name="Developer Mode v2", value="dev"),
+#        app_commands.Choice(name="DUDE V3", value="dude_v3"),
+#        app_commands.Choice(name="AIM", value="aim"),
+#        app_commands.Choice(name="UCAR", value="ucar"),
         app_commands.Choice(name="Nexus Mind", value="nexusmind")
     ])
     async def switchpersona(interaction: discord.Interaction, persona: app_commands.Choice[str]):
