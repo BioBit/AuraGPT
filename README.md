@@ -44,6 +44,10 @@ Clone this repository into a directory on your host machine. The container will 
 8. Invite your bot to your server via OAuth2 URL Generator
 
    ![image](https://user-images.githubusercontent.com/89479282/205949600-0c7ddb40-7e82-47a0-b59a-b089f929d177.png)
+
+9. Under 'Scopes' select 'bot' > 'Bot Permissions' will appear
+10. Under 'Bot Permissions' enable all 'text permissions' > copy the generated URL at the bottomt of the page.
+11. In a new browser tab or window > paste the copied. If you are the admin of a server, you should receive the option to invite the bot to your server.
 ---
 > **Note**
 >
