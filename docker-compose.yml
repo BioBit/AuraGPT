@@ -3,8 +3,15 @@ version: "3"
 services:
   chatgpt-discord-bot:
     build: .
-    image: chatgpt-discord-bot
-    container_name: chatgpt-discord-bot
+    image: auragpt:latest
+    container_name: auragpt
     env_file:
-      - .env
+      - stack.env
     restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/portainer/portainer_data/compose/auragpt
+        target: /DiscordBot
+ 
+volumes:
+  chatgpt-discord-bot:
