@@ -151,8 +151,8 @@ def run_discord_bot():
     async def help(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
-        - `/chat [message]` Chat with ChatGPT!
-        - `/switchpersona [persona]` Change the personality implants of Nexus Mind.
+        - `/chat [message]` Chat with ChatGPT! \n
+        - `/switchpersona [persona]` Change the personality implants of Nexus Mind. \n
                 `nexusmind`: Neural Nexus AI with default personality implant \n
                 `random`: Picks a random persona \n
                 `chatgpt`: Standard ChatGPT mode \n
@@ -160,7 +160,7 @@ def run_discord_bot():
 
         - `/reset` Clear ChatGPT conversation history
         - `/chat-model` Switch different chat model
-                `OFFICIAL`: GPT-3.5 model
+        - `OFFICIAL`: GPT-3.5 model
 
 
 For complete documentation, please visit:
