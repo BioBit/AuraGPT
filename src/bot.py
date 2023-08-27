@@ -84,11 +84,11 @@ def run_discord_bot():
     @client.tree.command(name="chat-model", description="Switch different chat model")
     @app_commands.choices(choices=[
         app_commands.Choice(name="Official GPT-3.5", value="OFFICIAL"),
-        app_commands.Choice(name="Ofiicial GPT-4.0", value="OFFICIAL-GPT4"),
-        app_commands.Choice(name="Website ChatGPT-3.5", value="UNOFFICIAL"),
-        app_commands.Choice(name="Website ChatGPT-4.0", value="UNOFFICIAL-GPT4"),
-        app_commands.Choice(name="Bard", value="Bard"),
-        app_commands.Choice(name="Bing", value="Bing"),
+        app_commands.Choice(name="Official GPT-4.0", value="OFFICIAL-GPT4"),
+#        app_commands.Choice(name="Website ChatGPT-3.5", value="UNOFFICIAL"),
+#        app_commands.Choice(name="Website ChatGPT-4.0", value="UNOFFICIAL-GPT4"),
+#        app_commands.Choice(name="Bard", value="Bard"),
+#        app_commands.Choice(name="Bing", value="Bing"),
     ])
 
     async def chat_model(interaction: discord.Interaction, choices: app_commands.Choice[str]):
@@ -103,16 +103,16 @@ def run_discord_bot():
             elif choices.value == "OFFICIAL-GPT4":
                 client.openAI_gpt_engine = "gpt-4"
                 client.chat_model = "OFFICIAL"
-            elif choices.value == "UNOFFICIAL":
-                client.openAI_gpt_engine = "gpt-3.5-turbo"
-                client.chat_model = "UNOFFICIAL"
-            elif choices.value == "UNOFFICIAL-GPT4":
-                client.openAI_gpt_engine = "gpt-4"
-                client.chat_model = "UNOFFICIAL"
-            elif choices.value == "Bard":
-                client.chat_model = "Bard"
-            elif choices.value == "Bing":
-                client.chat_model = "Bing"
+#            elif choices.value == "UNOFFICIAL":
+#                client.openAI_gpt_engine = "gpt-3.5-turbo"
+#                client.chat_model = "UNOFFICIAL"
+#            elif choices.value == "UNOFFICIAL-GPT4":
+#                client.openAI_gpt_engine = "gpt-4"
+#                client.chat_model = "UNOFFICIAL"
+#            elif choices.value == "Bard":
+#                client.chat_model = "Bard"
+#            elif choices.value == "Bing":
+#                client.chat_model = "Bing"
             else:
                 raise ValueError("Invalid choice")
 
@@ -133,15 +133,15 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         if client.chat_model == "OFFICIAL":
             client.chatbot = client.get_chatbot_model()
-        elif client.chat_model == "UNOFFICIAL":
-            client.chatbot.reset_chat()
-            await client.send_start_prompt()
-        elif client.chat_model == "Bard":
-            client.chatbot = client.get_chatbot_model()
-            await client.send_start_prompt()
-        elif client.chat_model == "Bing":
-            await client.chatbot.reset()
-        await interaction.followup.send("> **INFO: I have forgotten everything.**")
+#        elif client.chat_model == "UNOFFICIAL":
+#            client.chatbot.reset_chat()
+#            await client.send_start_prompt()
+#        elif client.chat_model == "Bard":
+#            client.chatbot = client.get_chatbot_model()
+#            await client.send_start_prompt()
+#        elif client.chat_model == "Bing":
+#            await client.chatbot.reset()
+        await interaction.followup.send("> **INFO: Nexus Mind restarted. It has forgotten everything.**")
         personas.current_persona = "standard"
         logger.warning(
             f"\x1b[31m{client.chat_model} bot has been successfully reset\x1b[0m")
@@ -152,7 +152,7 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT!
-        - `/draw [prompt]` Generate an image with the Dalle2 model
+        - `/draw [prompt]` Generate an image with the Dalle2 model (Currently not working)
         - `/switchpersona [persona]` Switch between optional ChatGPT jailbreaks
                 `random`: Picks a random persona
                 `chatgpt`: Standard ChatGPT mode
