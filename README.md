@@ -204,7 +204,6 @@ bard_enable_auto_login=False
 ## Commands
 
 * `/chat [message]` Chat with ChatGPT!
-* `/draw [prompt]` Generate an image with the Dalle2 model
 * `/switchpersona [persona]` Switch between optional chatGPT personalities.
    * `Nexus Mind`: Default personality implant for Neural Nexus AI
    * `random`: Picks a random persona
