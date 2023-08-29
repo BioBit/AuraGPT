@@ -7,6 +7,7 @@ from random import randrange
 from src.aclient import client
 from discord import app_commands
 from src import log, personas, responses #, art
+from discord import Member
 
 
 def run_discord_bot():
@@ -36,6 +37,11 @@ def run_discord_bot():
 
         await client.enqueue_message(interaction, message)
 
+    @client.event
+    async def on_member_join(member: Member):
+        channel = member.guild.system_channel  # Usually the channel where welcomes are posted
+        if channel is not None:
+            await channel.send(f"Welcome to Neural Nexus, {member.mention}! May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion.")
 
 #    @client.tree.command(name="private", description="Toggle private access")
 #    async def private(interaction: discord.Interaction):
