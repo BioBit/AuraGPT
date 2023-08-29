@@ -11,6 +11,7 @@ from utils.message_utils import send_split_message, send_response_with_images
 
 from dotenv import load_dotenv
 from discord import app_commands
+from discord import Member
 
 from revChatGPT.V3 import Chatbot
 from revChatGPT.V1 import AsyncChatbot
@@ -23,6 +24,7 @@ class aclient(discord.Client):
     def __init__(self) -> None:
         intents = discord.Intents.default()
         intents.message_content = True
+        intents.members = True
         super().__init__(intents=intents)
         self.tree = app_commands.CommandTree(self)
         self.current_channel = None
