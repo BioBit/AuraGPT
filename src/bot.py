@@ -48,6 +48,18 @@ def run_discord_bot():
         if isinstance(channel, discord.TextChannel):
             await channel.send(f"Welcome to Neural Nexus, {member.mention}! May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion. Use /chat .")
 
+    @client.event
+    async def on_member_update(member: Member):
+#        channel = member.guild.system_channel
+        channel = client.get_channel(1146177495553544273)
+        if channel is None:
+            logger.warning("System channel is None. Specify a channel manually.")
+            return
+        logger.info(f"System channel is of type {type(channel)}")
+        if isinstance(channel, discord.TextChannel):
+            await channel.send(f"Congratulations to your new role, {member.mention}! Your highest role is now {member.top_role} May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion. Use /chat .")
+
+    
 #    @client.tree.command(name="private", description="Toggle private access")
 #    async def private(interaction: discord.Interaction):
 #        await interaction.response.defer(ephemeral=False)
