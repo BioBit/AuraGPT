@@ -39,7 +39,8 @@ def run_discord_bot():
 
     @client.event
     async def on_member_join(member: Member):
-        channel = member.guild.system_channel
+#        channel = member.guild.system_channel
+        channel = client.get_channel(1146177495553544273)
         if channel is None:
             logger.warning("System channel is None. Specify a channel manually.")
             return
