@@ -41,7 +41,7 @@ def run_discord_bot():
     async def on_member_join(member: Member):
         channel = member.guild.system_channel  # Usually the channel where welcomes are posted
         if channel is not None:
-            await channel.send(f"Welcome to Neural Nexus, {member.mention}! May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion.")
+            await channel.send(f"Welcome to Neural Nexus, {member.mention}! May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion. Use /chat .")
 
 #    @client.tree.command(name="private", description="Toggle private access")
 #    async def private(interaction: discord.Interaction):
