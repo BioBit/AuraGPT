@@ -7,6 +7,7 @@ from random import randrange
 from src.aclient import client
 from discord import app_commands
 from src import log, personas, responses #, art
+from discord import Member
 
 
 def run_discord_bot():
@@ -36,7 +37,29 @@ def run_discord_bot():
 
         await client.enqueue_message(interaction, message)
 
+    @client.event
+    async def on_member_join(member: Member):
+#        channel = member.guild.system_channel
+        channel = client.get_channel(1146177495553544273)
+        if channel is None:
+            logger.warning("System channel is None. Specify a channel manually.")
+            return
+        logger.info(f"System channel is of type {type(channel)}")
+        if isinstance(channel, discord.TextChannel):
+            await channel.send(f"Welcome to Neural Nexus, {member.mention}! May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion. Use /chat .")
 
+    @client.event
+    async def on_member_update(member: Member):
+#        channel = member.guild.system_channel
+        channel = client.get_channel(1116405449047167047)
+        if channel is None:
+            logger.warning("System channel is None. Specify a channel manually.")
+            return
+        logger.info(f"System channel is of type {type(channel)}")
+        if isinstance(channel, discord.TextChannel):
+            await channel.send(f"Congratulations to your new role, {member.mention}! Your highest role is now {member.top_role} May your journey in New Eden be prosperous. For assistance, feel free to engage with me, Nexus Mind, your AI companion. Use /chat .")
+
+    
 #    @client.tree.command(name="private", description="Toggle private access")
 #    async def private(interaction: discord.Interaction):
 #        await interaction.response.defer(ephemeral=False)
@@ -152,8 +175,11 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT! \n
-        - `/switchpersona [persona]` Change the personality implants of Nexus Mind. \n
+        - `/switchpersona [persona]` Change the personality implants of Nexus Mind. This will load a different subroutine. \n
                 `nexusmind`: Neural Nexus AI with default personality implant \n
+                `cosmicscribe`: Neural Nexus AI with roleplay implant \n
+                `stellarhost`: Neural Nexus AI with hospitality implant \n
+                `wisdomnode`: Neural Nexus AI with default personality implant but added security clearence \n
                 `random`: Picks a random persona \n
                 `chatgpt`: Standard ChatGPT mode \n
                 `confidant`: Evil Confidant, evil trusted confidant \n
@@ -250,6 +276,9 @@ gpt-engine: {chat_engine_status}
 #        app_commands.Choice(name="AIM", value="aim"),
 #        app_commands.Choice(name="UCAR", value="ucar"),
         app_commands.Choice(name="Nexus Mind", value="nexusmind")
+        app_commands.Choice(name="Cosmic Scribe", value="cosmicscribe")
+        app_commands.Choice(name="Stellar Host", value="stellarhost")
+        app_commands.Choice(name="Wisdom Node", value="wisdomnode")
     ])
     async def switchpersona(interaction: discord.Interaction, persona: app_commands.Choice[str]):
         if interaction.user == client.user:
