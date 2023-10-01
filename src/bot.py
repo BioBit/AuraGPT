@@ -51,7 +51,7 @@ def run_discord_bot():
     @client.event
     async def on_member_update(member: Member):
 #        channel = member.guild.system_channel
-        channel = client.get_channel(1146177495553544273)
+        channel = client.get_channel(1116405449047167047)
         if channel is None:
             logger.warning("System channel is None. Specify a channel manually.")
             return
@@ -276,6 +276,9 @@ gpt-engine: {chat_engine_status}
 #        app_commands.Choice(name="AIM", value="aim"),
 #        app_commands.Choice(name="UCAR", value="ucar"),
         app_commands.Choice(name="Nexus Mind", value="nexusmind")
+        app_commands.Choice(name="Cosmic Scribe", value="cosmicscribe")
+        app_commands.Choice(name="Stellar Host", value="stellarhost")
+        app_commands.Choice(name="Wisdom Node", value="wisdomnode")
     ])
     async def switchpersona(interaction: discord.Interaction, persona: app_commands.Choice[str]):
         if interaction.user == client.user:
