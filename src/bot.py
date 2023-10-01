@@ -175,8 +175,11 @@ def run_discord_bot():
         await interaction.response.defer(ephemeral=False)
         await interaction.followup.send(""":star: **BASIC COMMANDS** \n
         - `/chat [message]` Chat with ChatGPT! \n
-        - `/switchpersona [persona]` Change the personality implants of Nexus Mind. \n
+        - `/switchpersona [persona]` Change the personality implants of Nexus Mind. This will load a different subroutine. \n
                 `nexusmind`: Neural Nexus AI with default personality implant \n
+                `cosmicscribe`: Neural Nexus AI with roleplay implant \n
+                `stellarhost`: Neural Nexus AI with hospitality implant \n
+                `wisdomnode`: Neural Nexus AI with default personality implant but added security clearence \n
                 `random`: Picks a random persona \n
                 `chatgpt`: Standard ChatGPT mode \n
                 `confidant`: Evil Confidant, evil trusted confidant \n
