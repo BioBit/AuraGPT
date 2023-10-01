@@ -206,6 +206,9 @@ bard_enable_auto_login=False
 * `/chat [message]` Chat with ChatGPT!
 * `/switchpersona [persona]` Switch between optional chatGPT personalities.
    * `Nexus Mind`: Default personality implant for Neural Nexus AI
+   * `cosmicscribe`: Neural Nexus AI with roleplay implant
+   * `stellarhost`: Neural Nexus AI with hospitality implant
+   * `wisdomnode`: Neural Nexus AI with default personality implant but added security clearence
    * `random`: Picks a random persona
    * `chatGPT`: Standard chatGPT mode
    * `confidant`: Evil Confidant, evil trusted confidant
