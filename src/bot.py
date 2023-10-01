@@ -279,6 +279,7 @@ gpt-engine: {chat_engine_status}
         app_commands.Choice(name="Cosmic Scribe", value="cosmicscribe"),
         app_commands.Choice(name="Stellar Host", value="stellarhost"),
         app_commands.Choice(name="Wisdom Node", value="wisdomnode"),
+        
     ])
     async def switchpersona(interaction: discord.Interaction, persona: app_commands.Choice[str]):
         if interaction.user == client.user:
